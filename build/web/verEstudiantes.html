@@ -23,11 +23,14 @@ and open the template in the editor.
                         contentType:"text/plain" 
                     }).done(function(msg){
                         var tabla="";
-                        tabla+="<table border=1>";
+                        tabla+="<table class='table table-hover'>";
+                        tabla+="<thead>";
                         tabla+="<th>"+"CI"+"</th>";
                         tabla+="<th>"+"Apellido"+"</th>";
                         tabla+="<th>"+"Nombre"+"</th>";
                         tabla+="<th>"+"Códigos de Clases"+"</th>";
+                        tabla+="</thead>";
+                        tabla+="<tbody class='table table-hover'>";
                         msg.forEach(function (elemento){
                             tabla+="<tr>";
                             tabla+="<td>"+elemento.studentId+"</td>";
@@ -37,6 +40,7 @@ and open the template in the editor.
                             tabla+="</tr>";
                             console.log(elemento.lastName);
                         });
+                        tabla+="</tbody>";
                         tabla+="</table>";
                         $('#contenido').html(tabla);
                     }).error(function(errorx){
@@ -52,8 +56,22 @@ and open the template in the editor.
             <a class="navbar-brand" href="#">Estudiantes</a>
         </nav>
         <div class="container">
+          <h5>* Click en Cargar para poder ver todos los registros o cambios.</h5>
           <input type="button" class="btn btn-primary" id="btncargar" value="Cargar">
-          <div id="contenido"></div>
+          <div class="row">
+  			<h1>Lista de Estudiantes</h1>
+		  	<hr />
+		  	<br><br>
+            <div id="contenido"></div>
+          </div>
+          <div class="btn-group btn-group-sm" role="group">
+            <a class="btn btn-default" href="nuevoEstudiante.html" class="btn btn-success ">
+		Nuevo Estudiante <i class="glyphicon glyphicon-plus"></i></a>
+            <a class="btn btn-default" href="editarEstudiante.html" class="btn btn-success ">
+		Editar Estudiante <i class="glyphicon glyphicon-pencil"></i></a>
+            <a class="btn btn-default" href="eliminarEstudiante.html" class="btn btn-success ">
+		Eliminar Estudiante <i class="glyphicon glyphicon-minus"></i></a>
+          </div>
         </div>
     </body>
 </html>
