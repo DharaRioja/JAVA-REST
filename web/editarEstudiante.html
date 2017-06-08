@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Nuevo Estudiante</title>
+         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script scr="jquery.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script> 
+            $(document).ready(function(){
+                $('#btninsertar').click(function(){
+                    var varci=$("#txtci").val();
+                    var varapellido=$("#txtapellido").val();
+                    var varnombre=$("#txtnombre").val();
+                    var varclases=$("#txtclases").val();
+                    datos={"studentId":varci,"lastName":varapellido,"firstName":varnombre,"classCodes":varclases}
+                    $.ajax({
+                        type:"POST",
+                        url:"http://localhost:8080/SimpleSchedulingApp1/api/v1/students",
+                        contentType:"application/json",
+                        dataType:"text",
+                        data: JSON.stringify(datos)
+                    }).done(function(msg){
+                        console.log("Se inserto correctamente!");
+                       
+                    });
+                });
+            });
+            
+        </script>
+            
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <a class="navbar-brand" href="#">Estudiante</a>
+        </nav>
+        <div class="container">
+            <form>
+           <div class="form-group">
+                        <label for="">CI</label>
+                            <input type="text" name="id" class="form-control" id="txtci" placeholder="Número de carnet de identidad">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Apellido:</label>
+                            <input type="text" name="lastName" class="form-control" id="txtapellido" placeholder="Apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Nombre:</label>
+                            <input type="text" name="firstName" class="form-control" id="txtnombre" placeholder="Nombre">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="">Clases:</label>
+                            <input type="text" name="clases" class="form-control" id="txtclases" placeholder="Clases">
+                </div>
+                <input type="button" id="btninsertar" value="Insertar">
+            </form>
+        </div>
+    </body>
+</html>
