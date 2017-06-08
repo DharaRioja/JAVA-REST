@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Eliminar Estudiante</title>
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script scr="jquery.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script> 
+            $(document).ready(function(){
+                $('#btneliminar').click(function(){
+                    var varci=$("#txtci").val();
+                    $.ajax({
+                        type:"DELETE",
+                        url:"http://localhost:8080/SimpleSchedulingApp1/api/v1/students/"+varci,
+                        dataType: "text",
+                        contentType:"text/plain" 
+                    }).done(function(msg){
+                        console.log("se elimino correctamente!");
+                       
+                    });
+                });
+            });
+            
+        </script>
+            
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <a class="navbar-brand" href="#">Estudiante</a>
+        </nav>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="">CI</label>
+                    <input type="text" name="id" class="form-control" id="txtci" placeholder="Número de Carnet de Identidad">
+                </div>
+                <input type="button" class="btn btn-danger" id="btneliminar" value="Eliminar">
+            </form>
+        </div>
+    </body>
+</html>

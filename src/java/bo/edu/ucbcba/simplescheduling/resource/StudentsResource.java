@@ -111,11 +111,12 @@ public class StudentsResource {
     
     @DELETE
     @Path("{studentId}")
-    public Response deleteStudent(@PathParam("studentId") Integer studentId) {
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteStudent(@PathParam("studentId") String studentId) {
         // search student
-        Student student = GenericResource.getStudent(studentId);
+        Student student = GenericResource.getStudent(Integer.parseInt(studentId));
         if (student != null) {
-            GenericResource.removeStudent(studentId);
+            GenericResource.removeStudent(Integer.parseInt(studentId));
         }
         return Response.status(Response.Status.NO_CONTENT).build();
     }
