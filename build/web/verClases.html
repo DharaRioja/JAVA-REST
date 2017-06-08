@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Estudiantes</title>
+        <title>Clases</title>
          <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,27 +18,27 @@ and open the template in the editor.
                 $('#btncargar').click(function(){
                     $.ajax({
                         type:"GET",
-                        url:"http://localhost:8080/SimpleSchedulingApp1/api/v1/students",
+                        url:"http://localhost:8080/SimpleSchedulingApp1/api/v1/classes",
                         dataType: "json",
                         contentType:"text/plain" 
                     }).done(function(msg){
                         var tabla="";
                         tabla+="<table class='table table-hover'>";
                         tabla+="<thead>";
-                        tabla+="<th>"+"CI"+"</th>";
-                        tabla+="<th>"+"Apellido"+"</th>";
-                        tabla+="<th>"+"Nombre"+"</th>";
-                        tabla+="<th>"+"Códigos de Clases"+"</th>";
+                        tabla+="<th>"+"Código"+"</th>";
+                        tabla+="<th>"+"Título"+"</th>";
+                        tabla+="<th>"+"Descripción"+"</th>";
+                        tabla+="<th>"+"CI de Estudiantes"+"</th>";
                         tabla+="</thead>";
                         tabla+="<tbody class='table table-hover'>";
                         msg.forEach(function (elemento){
                             tabla+="<tr>";
-                            tabla+="<td>"+elemento.studentId+"</td>";
-                            tabla+="<td>"+elemento.lastName+"</td>";
-                            tabla+="<td>"+elemento.firstName+"</td>";
-                            tabla+="<td>"+elemento.classCodes+"</td>";
+                            tabla+="<td>"+elemento.code+"</td>";
+                            tabla+="<td>"+elemento.title+"</td>";
+                            tabla+="<td>"+elemento.description+"</td>";
+                            tabla+="<td>"+elemento.studentIds+"</td>";
                             tabla+="</tr>";
-                            console.log(elemento.lastName);
+                            console.log(elemento.title);
                         });
                         tabla+="</tbody>";
                         tabla+="</table>";
@@ -53,26 +53,26 @@ and open the template in the editor.
         </script>
     <body>
         <nav class="navbar navbar-default">
-            <a class="navbar-brand" href="#">Estudiantes</a>
+            <a class="navbar-brand" href="#">Clases</a>
         </nav>
         <div class="container">
           <h5>* Click en Cargar para poder ver todos los registros o cambios.</h5>
           <input type="button" class="btn btn-primary" id="btncargar" value="Cargar">
           <div class="row">
-  			<h1>Lista de Estudiantes</h1>
+  			<h1>Lista de Clases</h1>
 		  	<hr />
 		  	<br><br>
             <div id="contenido"></div>
           </div>
           <div class="btn-group btn-group-sm" role="group">
-            <a class="btn btn-default" href="nuevoEstudiante.html" class="btn btn-success ">
-		Nuevo Estudiante <i class="glyphicon glyphicon-plus"></i></a>
-            <a class="btn btn-default" href="editarEstudiante.html" class="btn btn-success ">
-		Editar Estudiante <i class="glyphicon glyphicon-pencil"></i></a>
-            <a class="btn btn-default" href="eliminarEstudiante.html" class="btn btn-success ">
-		Eliminar Estudiante <i class="glyphicon glyphicon-minus"></i></a>
-            <a class="btn btn-default" href="verClases.html" class="btn btn-success ">
-		Ir a Clases <i class="glyphicon glyphicon-arrow-left"></i></a>
+            <a class="btn btn-default" href="nuevaClase.html" class="btn btn-success ">
+		Nueva Clase <i class="glyphicon glyphicon-plus"></i></a>
+            <a class="btn btn-default" href="editarClase.html" class="btn btn-success ">
+		Editar Clase <i class="glyphicon glyphicon-pencil"></i></a>
+            <a class="btn btn-default" href="eliminarClase.html" class="btn btn-success ">
+		Eliminar Clase <i class="glyphicon glyphicon-minus"></i></a>
+            <a class="btn btn-default" href="verEstudiantes.html" class="btn btn-success ">
+		Ir a Estudiantes <i class="glyphicon glyphicon-arrow-left"></i></a>
           </div>
         </div>
     </body>
