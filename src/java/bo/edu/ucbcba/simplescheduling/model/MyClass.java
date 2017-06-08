@@ -15,7 +15,7 @@ public class MyClass {
     private String code;
     private String title;
     private String description;
-    private List<Integer> studentIds;
+    private String studentIds;
 
     public MyClass() {
     }
@@ -71,19 +71,15 @@ public class MyClass {
     /**
      * @return the studentIds
      */
-    public List<Integer> getStudentIds() {
+    public String getStudentIds() {
         return studentIds;
     }
 
     /**
      * @param studentIds the studentIds to set
      */
-    public void setStudentIds(List<Integer> studentIds) {
+    public void setStudentIds(String studentIds) {
         this.studentIds = studentIds;
     }
     
-    public void setStudentId(Integer studentId)
-    {
-        studentIds.add(studentId);
-    }
 }

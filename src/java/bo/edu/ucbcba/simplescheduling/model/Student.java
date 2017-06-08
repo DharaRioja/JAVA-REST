@@ -16,11 +16,11 @@ public class Student {
     private int studentId;
     private String lastName;
     private String firstName;
-    private List<String> classCodes;
+    private String classCodes;
 
     public Student() {
-        lastName = firstName = "";
-        classCodes = new ArrayList<>();
+         classCodes = lastName = firstName = "";
+       
     }
 
     public Student(int studentId, String lastName, String firstName) {
@@ -74,19 +74,16 @@ public class Student {
     /**
      * @return the classCodes
      */
-    public List<String> getClassCodes() {
+    public String getClassCodes() {
         return classCodes;
     }
 
     /**
      * @param classCodes the classCodes to set
      */
-    public void setClassCodes(List<String> classCodes) {
+    public void setClassCodes(String classCodes) {
         this.classCodes = classCodes;
     }
     
-    public void setClassCode(String classCode)
-    {
-        classCodes.add(classCode);
-    }
+   
 }

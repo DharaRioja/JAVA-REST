@@ -54,15 +54,9 @@ public class ClassesResource {
         }
         String title = myClass.getTitle();
         String description = myClass.getDescription();
-        List<Integer> studentIds = myClass.getStudentIds();
+        String studentIds = myClass.getStudentIds();
         GenericResource.putMyClass(myClass);
-        for(int id : studentIds)
-        {
-            if(GenericResource.getStudent(id)!=null)
-            {
-                GenericResource.getStudent(id).setClassCode(classCode);
-            }
-        }
+        
         return Response.ok(gson.toJson(myClass), 
                 MediaType.APPLICATION_JSON)
                 .status(Response.Status.CREATED)
@@ -110,7 +104,7 @@ public class ClassesResource {
         String codeClass = myClass.getCode();
         String title = myClass.getTitle();
         String description = myClass.getDescription();
-        List<Integer> studentIds = myClass.getStudentIds();
+        String studentIds = myClass.getStudentIds();
         
         MyClass currentClass = GenericResource.getMyClass(codeClass);
         if (currentClass != null) {
